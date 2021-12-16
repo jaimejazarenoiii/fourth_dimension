@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sample_app/movies/movies.dart';
+import 'package:fourth_dimension/movies/movies.dart';
 import 'package:http/http.dart' as http;
 
 class MoviesPage extends StatelessWidget {

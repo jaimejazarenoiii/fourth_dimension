@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.sample_app">
+    package="com.example.fourth_dimension">
    <application
-        android:label="sample_app"
+        android:label="fourth_dimension"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
