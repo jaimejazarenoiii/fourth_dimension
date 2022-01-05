@@ -6,3 +6,5 @@ abstract class MoviesEvent extends Equatable {
 }
 
 class MoviesFetched extends MoviesEvent {}
+class MoviesClicked extends MoviesEvent {}
+class AddMovie extends MoviesEvent {}
