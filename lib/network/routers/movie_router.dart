@@ -6,7 +6,6 @@ part 'movie_router.freezed.dart';
 @freezed
 class MovieRouter extends BaseClientGenerator with _$MovieRouter {
 
-  // ROTA TANIMLAMALARI
   const MovieRouter._() : super();
   const factory MovieRouter.popular() = _Popular; 
 
@@ -27,7 +26,7 @@ class MovieRouter extends BaseClientGenerator with _$MovieRouter {
   @override
   String get method {
     return this.maybeWhen<String>(
-      orElse: () => 'GET', // AKSİ BELİRTİLMEDİKÇE İSTEKLER GET OLARAK GİDECEK.
+      orElse: () => 'GET',
     );
   }
 
@@ -35,7 +34,7 @@ class MovieRouter extends BaseClientGenerator with _$MovieRouter {
   dynamic get body {
     return this.maybeWhen(
       orElse: () {
-        return null; // AKSİ BELİRTİLMEDİKÇE BODY NULL GİDECEK.
+        return null;
       },
     );
   }
