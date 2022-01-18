@@ -28,7 +28,6 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
       transformer: throttleDroppable(throttleDuration),
     );
     on<MovieClicked>((event, emit) {
-        print("AHEHEHE");
       },
       transformer: throttleDroppable(throttleDuration)
     );

@@ -46,7 +46,6 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
     try {
       await repository.fetchAllMovies().then((result) {
         result.when(success: (data) {
-          print('asdsa $data');
           emit(
               state.copyWith(
                   status: MoviesStatus.success,

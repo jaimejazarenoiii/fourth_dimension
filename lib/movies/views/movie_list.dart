@@ -21,7 +21,6 @@ class _MovieListState extends State<MovieList> {
   Widget build(BuildContext context) {
     return BlocBuilder<MoviesBloc, MoviesState>(
         builder: (context, state) {
-          print("ZXC ${context}");
           switch (state.status) {
             case MoviesStatus.failure:
               return const Center(child: Text('failed to fetch posts'));
