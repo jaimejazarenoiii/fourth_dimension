@@ -45,7 +45,6 @@ class MovieRouter extends BaseClientGenerator with _$MovieRouter {
     return this.when(
         popular: () {
           final apiKey = dotenv.get('API_KEY', fallback: '');
-          print("ZXCXZCX $apiKey");
           return {'api_key': apiKey};
         }
     );
