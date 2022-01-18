@@ -1,12 +1,27 @@
 import 'package:equatable/equatable.dart';
+import '../../network/interfaces/base_api_response_model.dart';
+import 'package:json_annotation/json_annotation.dart';
+part 'movie.g.dart';
 
-class Movie extends Equatable {
-  const Movie({required this.id, required this.title, required this.body});
+@JsonSerializable()
+class Movie extends Equatable with BaseApiResponseModel<Movie> {
+  const Movie({required this.id, this.title, this.posterPath, this.overview, this.releaseDate, this.originalTitle});
 
   final int id;
-  final String title;
-  final String body;
+  final String? title;
+  final String? posterPath;
+  final String? overview;
+  final String? releaseDate;
+  final String? originalTitle;
+
+  factory Movie.fromJson(Map<String, dynamic> json) => _$MovieFromJson(json);
+  Map<String, dynamic> toJson() => _$MovieToJson(this);
 
   @override
-  List<Object> get props => [id, title, body];
+  Movie fromJson(Map<String, dynamic> json) {
+    return Movie.fromJson(json);
+  }
+
+  @override
+  List<Object> get props => [id];
 }

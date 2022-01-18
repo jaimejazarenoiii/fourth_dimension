@@ -18,9 +18,9 @@ class MovieListItem extends StatelessWidget {
         ),
         child: ListTile(
             leading: Text('${movie.id}', style: textTheme.caption),
-            title: Text(movie.title),
+            title: Text(movie.title ?? ''),
             isThreeLine: true,
-            subtitle: Text(movie.body),
+            subtitle: Text(movie.overview ?? ''),
             dense: true,
         ),
     );

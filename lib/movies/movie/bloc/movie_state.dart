@@ -5,7 +5,7 @@ enum MovieStatus { initial, success, failure }
 class MovieState extends Equatable {
   const MovieState({
     this.status = MovieStatus.initial,
-    this.movie = const Movie(id: 2, title: '76', body: 'zxc')
+    this.movie = const Movie(id: 2)
   });
 
   final MovieStatus status;

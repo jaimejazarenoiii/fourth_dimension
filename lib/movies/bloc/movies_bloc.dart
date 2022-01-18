@@ -44,24 +44,20 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
   ) async {
     if (state.hasReachedMax) return;
     try {
-      final tmpMovies = await repository.fetchAllMovies();
-      if (state.status == MoviesStatus.initial) {
-        return emit(state.copyWith(
-          status: MoviesStatus.success,
-          movies: tmpMovies,
-          hasReachedMax: false,
-        ));
-      }
-      final movies = [];
-      movies.isEmpty
-          ? emit(state.copyWith(hasReachedMax: true))
-          : emit(
+      await repository.fetchAllMovies().then((result) {
+        result.when(success: (data) {
+          print('asdsa $data');
+          emit(
               state.copyWith(
-                status: MoviesStatus.success,
-                movies: List.of(state.movies),
-                hasReachedMax: false,
+                  status: MoviesStatus.success,
+                  movies: List.of(data.results),
+                  hasReachedMax: false,
               ),
-            );
+          );
+        }, failure: (error) {
+          emit(state.copyWith(status: MoviesStatus.failure));
+        });
+      });
     } catch (_) {
       emit(state.copyWith(status: MoviesStatus.failure));
     }
@@ -73,7 +69,7 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
   ) async {
     try {
       final maxId = await state.movies.map((movie) => movie.id).reduce(max);
-      final movie = Movie(id: maxId.toInt() + 1, title: 'ggg', body: 'lez go gogo');
+      final movie = Movie(id: maxId.toInt() + 1, title: 'ggg');
       emit(
           state.copyWith(
               status: MoviesStatus.success,
