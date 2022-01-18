@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:fourth_dimension/network/interfaces/base_client_generator.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 part 'movie_router.freezed.dart';
 
 @freezed
@@ -19,7 +20,7 @@ class MovieRouter extends BaseClientGenerator with _$MovieRouter {
   @override
   String get path {
     return this.when<String>(
-      popular: () => 'popular?api_key=9afb919d1d3b48b128f9096cdb14f368'
+      popular: () => 'popular'
     );
   }
 
@@ -41,10 +42,12 @@ class MovieRouter extends BaseClientGenerator with _$MovieRouter {
 
   @override
   Map<String, dynamic>? get queryParameters {
-    return this.maybeWhen(
-      orElse: () {
-        return null; // AKSİ BELİRTİLMEDİKÇE QUERY NULL GİDECEK.
-      },
+    return this.when(
+        popular: () {
+          final apiKey = dotenv.get('API_KEY', fallback: '');
+          print("ZXCXZCX $apiKey");
+          return {'api_key': apiKey};
+        }
     );
   }
 }
