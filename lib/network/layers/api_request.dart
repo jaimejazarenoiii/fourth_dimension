@@ -7,7 +7,7 @@ class ApiRequest {
   static var shared = ApiRequest();
   Dio _client = Dio();
 
-  Future<Response> request({required BaseClientGenerator route,NetworkOptions? options}) {
+  Future<Response> request({required BaseClientGenerator route, NetworkOptions? options}) {
       return _client.fetch(RequestOptions(
         baseUrl: route.baseURL,
         method: route.method,
