@@ -17,7 +17,16 @@ class MovieListItem extends StatelessWidget {
             MaterialPageRoute(builder: (context) => MoviePage(movie: this.movie))
         ),
         child: ListTile(
-            leading: Text('${movie.id}', style: textTheme.caption),
+            leading: new Container(
+                height: 1500,
+                width: 100,
+                decoration: new BoxDecoration(
+                    image: new DecorationImage(
+                        image: NetworkImage('https://image.tmdb.org/t/p/original/${movie.posterPath ?? ''}'),
+                        fit: BoxFit.fill,
+                    ),
+                ),
+            ),
             title: Text(movie.title ?? ''),
             isThreeLine: true,
             subtitle: Text(movie.overview ?? ''),

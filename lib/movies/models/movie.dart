@@ -9,9 +9,12 @@ class Movie extends Equatable with BaseApiResponseModel<Movie> {
 
   final int id;
   final String? title;
+  @JsonKey(name: 'poster_path')
   final String? posterPath;
   final String? overview;
+  @JsonKey(name: 'release_date')
   final String? releaseDate;
+  @JsonKey(name: 'original_title')
   final String? originalTitle;
 
   factory Movie.fromJson(Map<String, dynamic> json) => _$MovieFromJson(json);
